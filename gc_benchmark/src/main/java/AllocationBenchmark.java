@@ -11,10 +11,11 @@ public class AllocationBenchmark {
         int numberOfMeasures = Integer.parseInt(args[0]);
         int allocationSize = Integer.parseInt(args[1]);
         int threadsCount = Integer.parseInt(args[2]);
+        boolean fixedSizeAllocation = Boolean.valueOf(args[3]);
 
         List<BenchmarkThread> benchmarkThreads = new ArrayList<>();
         for (int i = 0; i < threadsCount; i++) {
-            benchmarkThreads.add(new BenchmarkThread(numberOfMeasures, allocationSize, true));
+            benchmarkThreads.add(new BenchmarkThread(numberOfMeasures, allocationSize, fixedSizeAllocation));
         }
 
         ExecutorService executorService = Executors.newFixedThreadPool(threadsCount);
