@@ -12,4 +12,4 @@ curl localhost:4567/hello
 ```
 
 Po wykonaniu zapytania pod adres `localhost:4567/hello`,
-w logach aplikacji pojawi się czas wykonania metody.
+w logach aplikacji pojawi się czas wykonania metody oraz lista parametrów z jakimi została wywołana metoda.
