@@ -2,23 +2,38 @@
 
 Obserwując wyniki benchmarków na wykresach, widać istotną zależność między ilością dostępnej pamięci a wydajnością algorytmów GC.
 
-Wyniki w zależności od największej średniej wyników w testach z trzema rozmiarami stosu (128mb, 512mb, 1024mb):
+Środowisko testowe:
+* procesor Intel i5 3210-M (4 procesory logiczne)
+* 8GB pamięci RAM
+
 Pojedynczy wątek, losowy rozmiar alokacji:
-	1. G1GC
-	2. OldParallelGC
-	3. ConcMarkSweepGC
+
+| Max rozmiar sterty  | Najlepszy czas |
+| ------------- | ------------- |
+| 128mb  | G1GC  |
+| 512mb  | G1GC  |
+| 1024mb  | G1GC  |
 
 Cztery wątki, losowy rozmiar alokacji:
-	1. OldParallelGC
-	2. ConcMarkSweepGC
-	3. G1GC
+
+| Max rozmiar sterty  | Najlepszy czas |
+| ------------- | ------------- |
+| 128mb  | ParallelOldGC  |
+| 512mb  | ConcMarkSweepGC  |
+| 1024mb  | ParallelOldGC  |
 
 Pojedynczy wątek, stały rozmiar alokacji:
-	1. ConcMarkSweepGC
-	2. G1GC
-	3. old
+
+| Max rozmiar sterty  | Najlepszy czas |
+| ------------- | ------------- |
+| 128mb  | G1GC  |
+| 512mb  | ConcMarkSweepGC  |
+| 1024mb  | ConcMarkSweepGC  |
   
 Cztery wątki, stały rozmiar alokacji:
-	1. OldParallelGC
-	2. ConcMarkSweepGC
-	3. G1GC
+
+| Max rozmiar sterty  | Najlepszy czas |
+| ------------- | ------------- |
+| 128mb  | ConcMarkSweepGC  |
+| 512mb  | G1GC  |
+| 1024mb  | G1GC  |
