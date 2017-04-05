@@ -30,6 +30,7 @@ public class JavassistSimpleTransformer implements ClassFileTransformer {
 						method.insertBefore("elapsedTime = System.currentTimeMillis();");
 						method.insertAfter(" { elapsedTime = System.currentTimeMillis() - elapsedTime; " +
 								"System.out.println(\"" + method.getName() + " elapsedTime = \" + elapsedTime);}");
+						method.insertAfter("{ System.out.println(\"Params:\"); for (int i=0; i< $args.length; ++i) { System.out.println($args[i]); } }");
 					}
 				}
 				result = ctClazz.toBytecode();

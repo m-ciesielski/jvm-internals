@@ -19,6 +19,17 @@ public class Api {
         return "Hello world";
     }
 
+    @Measure
+    private static String hello(String name){
+        try {
+            Thread.sleep(100);
+        }
+        catch (InterruptedException ex){
+            ex.printStackTrace();
+        }
+        return "Hello " + name;
+    }
+
     private static String gutenTag(){
         try {
             Thread.sleep(100);
@@ -32,6 +43,7 @@ public class Api {
 
     public static void main(String[] args){
         get("/hello", (req, res) -> hello());
+        get("/hello/:name", (req, res) -> hello(req.params(":name")));
         get("/guten", (req, res) -> gutenTag());
     }
 }
